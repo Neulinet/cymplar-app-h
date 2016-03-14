@@ -266,12 +266,11 @@ namespace accountSettings {
   
         save(invitation: any) {
             const modalInstance = this.$uibModalInstance;
-            const toastR = this.toastr;
             this.$InvitationRESTService.sendInvitation(invitation, this.organization._id).then(function(response: any) {
                 if (response.success) {
                     modalInstance.close(response.data);
                 } else {
-                    toastR.error(response.msg);
+                    this.toastr.error('The invitation could not be sent, this contact was already invited to this organization.');
                 }
             });           
         }
@@ -284,13 +283,7 @@ namespace accountSettings {
 			this.checkingEmail = true;
 			this.availableEmail = undefined;
 			if (this.invitation.email !== undefined && this.invitation.email.trim() !== '') {
-                
-                const orgMember = {
-                    email: this.invitation.email,
-                    organization: this.organization._id
-                };
-                
-				this.$SignUpRESTService.doesAccountOrgMemberExist(orgMember).then((response: any) => {
+				this.$SignUpRESTService.isAccountOrganizatioMemberExisted(this.invitation.email).then((response: any) => {
 					this.checkingEmail = false;
 					this.availableEmail = !response.data.exist;
 				});
