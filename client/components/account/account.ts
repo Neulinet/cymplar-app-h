@@ -283,7 +283,13 @@ namespace accountSettings {
 			this.checkingEmail = true;
 			this.availableEmail = undefined;
 			if (this.invitation.email !== undefined && this.invitation.email.trim() !== '') {
-				this.$SignUpRESTService.isAccountOrganizatioMemberExisted(this.invitation.email).then((response: any) => {
+                
+                const orgMember = {
+                    email: this.invitation.email,
+                    organization: this.organization._id
+                };
+                
+				this.$SignUpRESTService.doesAccountOrgMemberExist(orgMember).then((response: any) => {
 					this.checkingEmail = false;
 					this.availableEmail = !response.data.exist;
 				});
