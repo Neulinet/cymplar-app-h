@@ -266,11 +266,12 @@ namespace accountSettings {
   
         save(invitation: any) {
             const modalInstance = this.$uibModalInstance;
+            const toastR = this.toastr;
             this.$InvitationRESTService.sendInvitation(invitation, this.organization._id).then(function(response: any) {
                 if (response.success) {
                     modalInstance.close(response.data);
                 } else {
-                    this.toastr.error(response.msg);
+                    toastR.error(response.msg);
                 }
             });           
         }
