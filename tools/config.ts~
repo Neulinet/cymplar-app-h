@@ -9,7 +9,7 @@ const pkg = JSON.parse(fs.readFileSync(`${CWD}/package.json`, 'utf8'));
 
 // --------------
 // Configuration.
-const ENV: string = argv['env'] || process.env.profile || 'dev' ;
+const ENV: string = argv['env'] || process.env.profile || 'dev';
 process.env.profile = ENV;
 
 const CYMPLAR_MONGO_URI: string = argv['CYMPLAR_MONGO_URI'] || process.env.CYMPLAR_MONGO_URI;
