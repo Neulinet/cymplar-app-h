@@ -175,6 +175,9 @@ export class LogItemService extends BaseService<LogItem> {
 	
 	protected validateAuthDataPostSearchRemove(modelOptions: ModelOptions = {}, 
 		data?: LogItem): AuthorizationResponse {
+			
+		console.log(data);
+		console.log( modelOptions.authorization.leadMember);
 		const isLogItemOwner =  modelOptions.authorization.leadMember._id.toString() === 
 			ObjectUtil.getStringUnionProperty(data.createdBy).toString();
 		if (isLogItemOwner) {
