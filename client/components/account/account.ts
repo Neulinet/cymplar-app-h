@@ -239,6 +239,7 @@ namespace accountSettings {
             const modalInstance = this.$uibModalInstance;
             const theProfileToSave = this.newProfile;
             this.$AccountRESTService.saveAccountOrganizationMember(theProfileToSave).then(function(response: any) {
+                
                 if (response.success) {
                     modalInstance.close(response.data);
                 } else {
