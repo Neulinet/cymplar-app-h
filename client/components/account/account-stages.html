@@ -1,0 +1,27 @@
+<div class="padding-box">        
+                            
+    <h3>Edit, add or delete stage</h3>
+    
+    <li ng-repeat="status in accOrgStagesCtrl.projectDefaultStatuses">
+        
+        <div class="card">
+            <h5><strong>{{status.label}}</strong></h5>
+                                        
+            <div class="progress margin-b-n">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+                    {{status.value}}%
+                </div>
+            </div>
+
+            <div class="dropdown control" ng-if="accOrgStagesCtrl.isAuthorized()">
+                <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <a href=""  ng-click="accOrgStagesCtrl.edit(status)">Edit</a>
+                    <a href=""  ng-click="accOrgStagesCtrl.delete(status)">Delete</a>
+                </ul>
+            </div><!--dropdown -->
+        </div><!--card-->
+    </li>
+       
+</div><!--padding-box-->
+
